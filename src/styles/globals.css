@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 lg:py-24;
+  }
+
+  .heading-1 {
+    @apply text-4xl font-bold sm:text-5xl lg:text-6xl;
+  }
+
+  .heading-2 {
+    @apply text-3xl font-bold sm:text-4xl;
+  }
+
+  .heading-3 {
+    @apply text-2xl font-bold sm:text-3xl;
+  }
+}

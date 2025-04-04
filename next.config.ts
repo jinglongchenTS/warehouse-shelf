@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
-
+/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  reactStrictMode: true,
+  images: {
+    domains: ['localhost'],
+    formats: ['image/avif', 'image/webp'],
+  },
+  i18n: {
+    locales: ['zh'],
+    defaultLocale: 'zh',
+  },
+}
 
-export default nextConfig;
+module.exports = nextConfig
