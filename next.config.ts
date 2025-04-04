@@ -6,10 +6,9 @@ const nextConfig: NextConfig = {
     domains: ['localhost'],
     formats: ['image/avif', 'image/webp'],
   },
-  i18n: {
-    locales: ['zh'],
-    defaultLocale: 'zh',
-  },
+  eslint: {
+    dirs: ['pages', 'utils', 'components', 'hooks', 'styles'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
+  }
 }
 
 module.exports = nextConfig

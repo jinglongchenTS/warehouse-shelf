@@ -20,6 +20,7 @@
     "swiper": "^9.4.1"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^15.2.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.2",
@@ -27,7 +28,7 @@
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
-    "eslint": "8.43.0",
+    "eslint": "9.23.0",
     "eslint-config-next": "15.2.4",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.2",

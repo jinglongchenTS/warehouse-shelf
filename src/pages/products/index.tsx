@@ -1,43 +1,50 @@
-import { GetStaticProps } from 'next'
-import Head from 'next/head'
-import { useState } from 'react'
-import { Product } from '@/types'
-import ProductGrid from '@/components/products/ProductGrid'
+import { GetStaticProps } from "next";
+import Head from "next/head";
+import { useState } from "react";
+import { Product } from "@/types";
+import ProductGrid from "@/components/products/ProductGrid";
 
 interface ProductsPageProps {
-  products: Product[]
+  products: Product[];
 }
 
 const categories = [
-  { id: 'all', name: '全部' },
-  { id: 'heavy', name: '重型货架' },
-  { id: 'medium', name: '中型货架' },
-  { id: 'light', name: '轻型货架' },
-  { id: 'auto', name: '自动化立体仓库' },
-]
+  { id: "all", name: "全部" },
+  { id: "heavy", name: "重型货架" },
+  { id: "medium", name: "中型货架" },
+  { id: "light", name: "轻型货架" },
+  { id: "auto", name: "自动化立体仓库" },
+];
 
 export default function ProductsPage({ products }: ProductsPageProps) {
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProducts = products.filter((product) => {
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
+    const matchesCategory =
+      selectedCategory === "all" || product.category === selectedCategory;
+    const matchesSearch =
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <>
       <Head>
         <title>产品中心 - 仓储货架</title>
-        <meta name="description" content="浏览我们的仓储货架产品系列，包括重型货架、中型货架、轻型货架和自动化立体仓库等解决方案" />
+        <meta
+          name="description"
+          content="浏览我们的仓储货架产品系列，包括重型货架、中型货架、轻型货架和自动化立体仓库等解决方案"
+        />
       </Head>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="space-y-8 sm:space-y-12">
           <div className="text-center sm:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">产品中心</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+              产品中心
+            </h1>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600 max-w-3xl">
               浏览我们的全系列仓储货架产品，为您的仓储需求找到最佳解决方案
             </p>
@@ -51,8 +58,8 @@ export default function ProductsPage({ products }: ProductsPageProps) {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                     selectedCategory === category.id
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   {category.name}
@@ -100,17 +107,87 @@ export default function ProductsPage({ products }: ProductsPageProps) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
-  const products = await res.json()
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+  const products = [
+    {
+      id: "1",
+      name: "重型货架",
+      category: "heavy",
+      description: "适用于大型仓库，承重能力强，存取效率高",
+      specifications: {
+        size: "2000×1000×4000mm",
+        weight: "500kg",
+        loadCapacity: "1500kg/层",
+        material: "优质冷轧钢",
+      },
+      images: [
+        "/images/products/heavy-duty-1.jpg",
+        "/images/products/heavy-duty-2.jpg",
+      ],
+      features: ["高承重能力", "安装便捷", "结构稳定", "可定制尺寸"],
+    },
+    {
+      id: "2",
+      name: "中型货架",
+      category: "medium",
+      description: "适用于大型仓库，承重能力强，存取效率高",
+      specifications: {
+        size: "2000×1000×4000mm",
+        weight: "500kg",
+        loadCapacity: "1500kg/层",
+        material: "优质冷轧钢",
+      },
+      images: [
+        "/images/products/heavy-duty-1.jpg",
+        "/images/products/heavy-duty-2.jpg",
+      ],
+      features: ["高承重能力", "安装便捷", "结构稳定", "可定制尺寸"],
+    },
+    {
+      id: "3",
+      name: "轻型货架",
+      category: "light",
+      description: "适用于大型仓库，承重能力强，存取效率高",
+      specifications: {
+        size: "2000×1000×4000mm",
+        weight: "500kg",
+        loadCapacity: "1500kg/层",
+        material: "优质冷轧钢",
+      },
+      images: [
+        "/images/products/heavy-duty-1.jpg",
+        "/images/products/heavy-duty-2.jpg",
+      ],
+      features: ["高承重能力", "安装便捷", "结构稳定", "可定制尺寸"],
+    },
+    {
+      id: "4",
+      name: "自动化立体仓库",
+      category: "auto",
+      description: "适用于大型仓库，承重能力强，存取效率高",
+      specifications: {
+        size: "2000×1000×4000mm",
+        weight: "500kg",
+        loadCapacity: "1500kg/层",
+        material: "优质冷轧钢",
+      },
+      images: [
+        "/images/products/heavy-duty-1.jpg",
+        "/images/products/heavy-duty-2.jpg",
+      ],
+      features: ["高承重能力", "安装便捷", "结构稳定", "可定制尺寸"],
+    },
+    // ... 更多产品数据
+  ];
 
   return {
     props: {
       products,
     },
     revalidate: 60,
-  }
-}
+  };
+};
